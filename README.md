@@ -6,10 +6,10 @@ As an avid movie enthusiast, who frequently uses IMDb to discover and track film
 
 ## Initial Requirements (In order of Priority)
 Before starting, I wanted to highlight and analyse the key requirements that my project must include. From initial observations, the basic functionalities of IMDb are comprised of: 
-- **Search for Specific Movies**. Argueably the most important feature, as it allows users to explore and search for titles.
-- **Browse Movies**. View the currently trending movies on the main page. 
-- **Sign in**. Allows users to create a personal account, in order to track their watchlists etc. 
-- **View detailed movie information**. Including release year, runtime, cast and other relevent information. 
+- **Search for Specific Movies**: Argueably the most important feature, as it allows users to explore and search for titles.
+- **Browse Movies**: View the currently trending movies on the main page. 
+- **Sign in**: Allows users to create a personal account, in order to track their watchlists etc. 
+- **View detailed movie information**: Including release year, runtime, cast and other relevent information. 
 - **See ratings**.
 ### Future / Low-Priority Features
-- **Watchlist**. More of a nice-to-have feature. 
+- **Watchlist**: More of a nice-to-have feature. 
