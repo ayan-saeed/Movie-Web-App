@@ -7,6 +7,9 @@ const IMG_PATH = "https://image.tmdb.org/t/p/w1280";
 const SEARCHAPI = "https://api.themoviedb.org/3/search/movie?&api_key=0cec74559973c77aa1ad5ebabb957d6b&query=";
 // URL for searching for tv shows
 const SEARCHTV = "https://api.themoviedb.org/3/search/tv?api_key=0cec74559973c77aa1ad5ebabb957d6b&query=";
+// URL for TV shows
+const TV_APILINK = "https://api.themoviedb.org/3/discover/tv?sort_by=popularity.desc&api_key=0cec74559973c77aa1ad5ebabb957d6b&page=1";
+
 
 // References to elements
 const main = document.getElementById("section");
@@ -16,8 +19,9 @@ const returnToMain = document.getElementsByClassName("logo")[0];
 const type = document.getElementById("type");
 
 /* Calls the returnResults function,
-   so popular movies will be displayed on page load */
+   so popular movies and tv shows will be displayed on page load */
 returnResults(APILINK, "Popular Movies Today");
+returnResults(TV_APILINK, "Popular TV Shows Today");
 function returnResults(url, innerText2){
     // Sends a request to the API URL
     fetch(url).then(res => res.json())
