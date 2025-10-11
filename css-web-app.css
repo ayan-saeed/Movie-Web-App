@@ -53,7 +53,8 @@ h3{
     justify-content: space-between;
     background-color: #121212;
     position: relative;
-    padding: 10px 20px;
+    padding: 0.1px 20px;
+    flex-wrap: wrap;
 }
 
 /* Any div inside .nav, their elements will align to the left,
@@ -69,25 +70,26 @@ h3{
 
 /* Styles the logo */
 .logo {
-    font-family: 'Arial', sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 2rem;
     font-weight: bold;
     color: #000000;
     background-color: red;
     text-decoration: none;
     padding: 4px 8px;
-    border-radius: 4px;
+    border-radius: 8px;
     text-decoration: none;
     display: inline-block;
 }
 
-/* Sets max width and horizontal margin */
+/* Sets max width and horizontal margin of the nav bar*/
 .search-bar {
     flex: 1;
     display: flex;
     justify-content: center;
     max-width: 500px;
-    margin: 0 auto;
+    min-width: 150px;
+    margin: 0 10px;
 }
 
 /* Styles the form (where the user types in the search bar), by giving it 
@@ -151,6 +153,7 @@ input{
     cursor: pointer;
 }
 
+/* Styling for the drop down */
 #type{
     height: 100%;
     border: none;
@@ -161,4 +164,23 @@ input{
     font-weight: bold;
     cursor: pointer;
     outline: none;
+}
+
+/* Styling the sign in */
+.sign{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    padding: 14px 14px;
+    border-radius: 30px;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s ease;
+}
+
+/* Background appears when hovering over sign in button */
+.sign:hover{
+    background-color: #6e6e6e;
 }
