@@ -54,15 +54,19 @@ h3{
     color: white;
 }
 
-/* Gives the navigation bar a dark background */
+
 .nav{
+    /* Navigation bar uses Flexbox - display: flex, makes nav a flex container*/
     display: flex;
+    /* Vertically centers children */
     align-items: center;
+    /* Spreads child elements out with space between */
     justify-content: space-between;
+    /* Gives the navigation bar a dark background */
     background-color: #121212;
     position: relative;
     padding: 0.1px 20px;
-    flex-wrap: wrap;
+
 }
 
 /* Any div inside .nav, their elements will align to the left,
@@ -90,13 +94,16 @@ h3{
     display: inline-block;
 }
 
-/* Sets max width and horizontal margin of the nav bar*/
+
 .search-bar {
+    /* Makes the search bar take up all available space between logo and sign-in link */
     flex: 1;
     display: flex;
     justify-content: center;
+    /* Prevents search bar from getting too large */
     max-width: 500px;
     min-width: 150px;
+    /* Horizontally centers it if there's extra space */
     margin: 0 10px;
 }
 
