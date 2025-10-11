@@ -108,4 +108,5 @@ returnToMain.addEventListener("click", (e) => {
     e.preventDefault();
     main.innerHTML = '';
     returnResults(APILINK, "Popular Movies Today");
+    returnResults(TV_APILINK, "Popular TV Shows Today");
 });
