@@ -84,5 +84,5 @@ form.addEventListener("submit", (e) => {
 returnToMain.addEventListener("click", (e) => {
     e.preventDefault();
     main.innerHTML = '';
-    returnMovies(APILINK, "Popular Today");
+    returnMovies(APILINK, "Popular Movies Today");
 });
