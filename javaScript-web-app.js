@@ -1,21 +1,24 @@
 /* This is the URL for TMDb's "Discover Movies" API. 
-   Fetches the movies sorted my popularity, in descending order */ 
+   Fetches the movies sorted by popularity, in descending order */ 
 const APILINK = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=0cec74559973c77aa1ad5ebabb957d6b&page=1";
 // URL for the movie posters */
 const IMG_PATH = "https://image.tmdb.org/t/p/w1280";
 // URL for searching movies by query text */
 const SEARCHAPI = "https://api.themoviedb.org/3/search/movie?&api_key=0cec74559973c77aa1ad5ebabb957d6b&query=";
+// URL for searching for tv shows
+const SEARCHTV = "https://api.themoviedb.org/3/search/tv?api_key=0cec74559973c77aa1ad5ebabb957d6b&query=";
 
 // References to elements
 const main = document.getElementById("section");
 const form = document.getElementById("form");
 const search = document.getElementById("query");
 const returnToMain = document.getElementsByClassName("logo")[0];
+const type = document.getElementById("type");
 
-/* Calls the returnMovies function,
+/* Calls the returnResults function,
    so popular movies will be displayed on page load */
-returnMovies(APILINK, "Popular Movies Today");
-function returnMovies(url, innerText2){
+returnResults(APILINK, "Popular Movies Today");
+function returnResults(url, innerText2){
     // Sends a request to the API URL
     fetch(url).then(res => res.json())
     // Creates a 'h2' heading and appends it to main
@@ -32,7 +35,7 @@ function returnMovies(url, innerText2){
             const div_card = document.createElement('div');
             div_card.setAttribute('class','card');
             div_card.classList.add('clickableCard');
-            div_card.textContent = element.div_card;
+
             //Checks to see if the movie card is clicked
             div_card.addEventListener('click', () =>{
                 main.innerHTML = '';
@@ -48,10 +51,14 @@ function returnMovies(url, innerText2){
             //Creates a 'h3' for the movie title
             const title = document.createElement('h3');
             title.classList.add('title');
+            /* Uses the movie title if it exists; otherwise, 
+               uses the TV show name */
+            const titleText = element.title || element.name;
+            title.innerHTML = titleText;
             /* Wraps the image in a '<center>' element, as well as setting up
                the title text and poster source image*/
             const center = document.createElement('center');
-            title.innerHTML = `${element.title}`;
+
             image.src = IMG_PATH + element.poster_path;
             center.appendChild(image);
             /* Appends the image and title to the card, card to column, column to row, 
@@ -65,24 +72,36 @@ function returnMovies(url, innerText2){
     });
 }
 
-/* Listens for a form submission, i.e. a movie query. If detected,
-   it clears the current movie display and gets the search query, as well as, calling 'returnMovies'
-   to return the movies that fit the query submission. Lastly, it clears the input field */
+/* Listens for a form submission.  If detected, it clears the current
+   movie display and gets the search query, as well as, calling 'returnResults'
+   to return the movies/tv shows  that fit the query submission.
+   Lastly, it clears the input field */
 form.addEventListener("submit", (e) => {
     e.preventDefault();
     main.innerHTML = '';
+    // Gets the text entered by the user in the search input
     const searchItem = search.value;
+    // Gets the selected option from the dropddown (either "tv" or "movie")
+    const selectedType = type.value;
+    // Only proceeds if user selected "movie"
     if (searchItem){
-        returnMovies(SEARCHAPI + searchItem, "Search Results");
+        if(selectedType === "movie"){
+            /* Calls the 'returnResults' function with the movie search URL and heading. 
+               Returns all the movies that match the query */
+            returnResults(SEARCHAPI + searchItem, "Search Results");
+        } else if (selectedType === "tv"){
+            // Returns the tv shows that match the query
+            returnResults(SEARCHTV + searchItem, "Search Results");
+        }
         search.value = '';
     }
 })
 
 /* When the logo is clicked, it clears the main section, and returns to the default page,
-   i.e. it reloads popular movies by calling returnMovies(APILINK). Useful if user wants to return to main page, 
+   i.e. it reloads popular movies by calling returnResults(APILINK). Useful if user wants to return to main page, 
    after a search query */
 returnToMain.addEventListener("click", (e) => {
     e.preventDefault();
     main.innerHTML = '';
-    returnMovies(APILINK, "Popular Movies Today");
+    returnResults(APILINK, "Popular Movies Today");
 });
