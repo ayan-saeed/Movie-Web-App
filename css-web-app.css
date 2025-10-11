@@ -51,6 +51,8 @@ body{
 
 /* Make all h3 elements white, i.e. the title of the movie */
 h3{
+    font-weight: normal;
+    font-size: 15px;
     color: white;
 }
 
