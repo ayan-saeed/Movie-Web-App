@@ -14,16 +14,15 @@ const returnToMain = document.getElementsByClassName("logo")[0];
 
 /* Calls the returnMovies function,
    so popular movies will be displayed on page load */
-returnMovies(APILINK);
-function returnMovies(url){
+returnMovies(APILINK, "Popular Today");
+function returnMovies(url, innerText2){
     // Sends a request to the API URL
     fetch(url).then(res => res.json())
-    /* Creates a 'h2' heading named "Popular today", 
-       and appends it to main*/
+    // Creates a 'h2' heading and appends it to main
     .then(function(data){
         const heading = document.createElement('h2');
-        heading.innerText = "Popular Today";
-        heading.setAttribute('id', 'popular-heading');
+        heading.innerText = innerText2;
+        heading.setAttribute('id', 'heading');
         main.appendChild(heading);
         /* Array of movies returned by the movie API,
            and Loops through each movie within the array */
@@ -43,6 +42,12 @@ function returnMovies(url){
             //Creates a 'h3' for the movie title
             const title = document.createElement('h3');
             title.setAttribute('id','title');
+            title.classList.add('clickableTitle');
+            title.textContent = element.title;
+            //Checks to see if the movie title is clicked
+            title.addEventListener('click', () =>{
+                main.innerHTML = '';
+            })
             /* Wraps the image in a '<center>' element, as well as setting up
                the title text and poster source image*/
             const center = document.createElement('center');
@@ -68,7 +73,7 @@ form.addEventListener("submit", (e) => {
     main.innerHTML = '';
     const searchItem = search.value;
     if (searchItem){
-        returnMovies(SEARCHAPI + searchItem);
+        returnMovies(SEARCHAPI + searchItem, "Search Results");
         search.value = '';
     }
 })
@@ -79,5 +84,5 @@ form.addEventListener("submit", (e) => {
 returnToMain.addEventListener("click", (e) => {
     e.preventDefault();
     main.innerHTML = '';
-    returnMovies(APILINK);
+    returnMovies(APILINK, "Popular Today");
 });

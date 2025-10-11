@@ -13,7 +13,7 @@ html, body {
 /* When opening the web page, the user is met with a series of movies,
    which a popular today, therefore this heading style the heading 
    which says 'POPULAR TODAY' */
-#popular-heading {
+#heading {
     font-size: 2.5rem;
     font-weight: bold;
     margin: 20px 0;
@@ -124,4 +124,9 @@ input{
   object-fit: cover;
   object-position: center;
   display: block;
+}
+
+/* Makes users cursor into a pointer when hovering over movie title */
+.clickableTitle{
+    cursor: pointer;
 }
