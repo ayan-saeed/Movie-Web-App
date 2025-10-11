@@ -4,9 +4,26 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Movie Web Application</title>
+        <!-- Link styling sheet -->
         <link rel="stylesheet" href="css-web-app.css">
     </head>
     <body>
-
+        <!-- Encompass all navigation tools within a 'div' with class named 'nav' for css -->
+        <div class="nav">
+            <!-- Used href="#" so the users cursor turns to a click when hovering over the name of the movie site to return to the main page -->
+            <a class="logo" href="#">MyMovieDb</a>
+            <!-- Create search bar with class for css styling -->
+            <div class="search-bar">
+                <form role="search" id="form">
+                    <input type="search" id="query" name="q" placeholder="Search...">
+                </form>
+            </div>
+        </div>
+        <!-- Main container for displaying posters of movies. 
+             The JavaScript will fetch movie data and append each movie poster inside this section -->
+        <section id="section">
+        </section>
     </body>
+    <!-- Link JavaScript -->
+    <script src="javaScript-web-app.js"></script>
 </html>

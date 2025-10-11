@@ -1,0 +1,127 @@
+/* All elements are set border-box, 
+   So the width and height of elements include padding and border */
+*{
+    box-sizing: border-box;
+}
+
+/* Removes edfault browser margins/padding */
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+/* When opening the web page, the user is met with a series of movies,
+   which a popular today, therefore this heading style the heading 
+   which says 'POPULAR TODAY' */
+#popular-heading {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 20px 0;
+    color: red;
+    font-family: 'Arial', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Creates a grid format for the posters of the movie, 
+   so when the web page is minimised, the images of the movies adjust */
+#section{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 15px;
+    padding: 15px;
+    justify-items: center;
+}
+
+/* Makes the background colour of the page black, 
+   and sets the text of the document to sans-serif */
+body{
+    background-color: #000000;
+    font-family: sans-serif;
+    color: #ffffff;
+}
+
+/* Make all h3 elements white, i.e. the title of the movie */
+h3{
+    color: white;
+}
+
+/* Gives the navigation bar a dark background */
+.nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #121212;
+    position: relative;
+    padding: 10px 20px;
+}
+
+/* Any div inside .nav, their elements will align to the left,
+   and customises the search bar*/
+.nav div{
+    float: left;
+    color: white;
+    text-align: left;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+/* Styles the logo */
+.logo {
+    font-family: 'Arial', sans-serif;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #000000;
+    background-color: red;
+    text-decoration: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* Sets max width and horizontal margin */
+.search-bar {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* Styles the form (where the user types in the search bar), by giving it 
+   a white background, rounded corners, and uses flex to vertically align children */
+form{
+    background-color: #ffffff;
+    width: 500px;
+    height: 45px;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+}
+
+/* Styles the input of the search bar */
+input{
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 15px;
+  font-family: inherit;
+  color: #000000;
+  width: 100%;
+  height: 100%;
+  padding: 0 9px;
+  box-sizing: border-box;
+}
+
+/* Crops the thumbnail to maintain the aspect ratio */
+.thumbnail{
+  width: 180px;
+  height: 320px;
+  border-radius: 11px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
