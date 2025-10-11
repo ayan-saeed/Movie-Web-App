@@ -33,7 +33,7 @@ function returnResults(url, innerText2){
         main.appendChild(heading);
         /* Array of movies returned by the movie API,
            and Loops through each movie within the array */
-        console.log(data.results);
+           
         data.results.forEach(element =>{
             // Creates a layout for the movie posters titles
             const div_card = document.createElement('div');
