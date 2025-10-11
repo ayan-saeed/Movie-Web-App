@@ -15,7 +15,11 @@
             <!-- Create search bar with class for css styling -->
             <div class="search-bar">
                 <form role="search" id="form">
-                    <input type="search" id="query" name="q" placeholder="Search...">
+                    <select id="type">
+                        <option value="movie" selected>Movies</option>
+                        <option value="tv">TV Shows</option>
+                    </select>
+                    <input type="search" id="query" name="q" placeholder="">
                 </form>
             </div>
         </div>

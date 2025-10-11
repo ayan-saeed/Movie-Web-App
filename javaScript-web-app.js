@@ -31,6 +31,12 @@ function returnMovies(url, innerText2){
             // Creates a layout for the movie posters titles
             const div_card = document.createElement('div');
             div_card.setAttribute('class','card');
+            div_card.classList.add('clickableCard');
+            div_card.textContent = element.div_card;
+            //Checks to see if the movie card is clicked
+            div_card.addEventListener('click', () =>{
+                main.innerHTML = '';
+            })
             const div_row = document.createElement('div');
             div_row.setAttribute('class','row');
             const div_column = document.createElement('div');
@@ -41,13 +47,7 @@ function returnMovies(url, innerText2){
             image.setAttribute('id','image');
             //Creates a 'h3' for the movie title
             const title = document.createElement('h3');
-            title.setAttribute('id','title');
-            title.classList.add('clickableTitle');
-            title.textContent = element.title;
-            //Checks to see if the movie title is clicked
-            title.addEventListener('click', () =>{
-                main.innerHTML = '';
-            })
+            title.classList.add('title');
             /* Wraps the image in a '<center>' element, as well as setting up
                the title text and poster source image*/
             const center = document.createElement('center');
