@@ -14,7 +14,7 @@ const returnToMain = document.getElementsByClassName("logo")[0];
 
 /* Calls the returnMovies function,
    so popular movies will be displayed on page load */
-returnMovies(APILINK, "Popular Today");
+returnMovies(APILINK, "Popular Movies Today");
 function returnMovies(url, innerText2){
     // Sends a request to the API URL
     fetch(url).then(res => res.json())
