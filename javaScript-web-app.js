@@ -18,10 +18,14 @@ const search = document.getElementById("query");
 const returnToMain = document.getElementsByClassName("logo")[0];
 const type = document.getElementById("type");
 
+// Store the user's last search
+let lastSearch = null;
+
 /* Calls the returnResults function,
    so popular movies and tv shows will be displayed on page load */
 returnResults(APILINK, "Popular Movies Today");
 returnResults(TV_APILINK, "Popular TV Shows Today");
+
 function returnResults(url, innerText2){
     // Sends a request to the API URL
     fetch(url).then(res => res.json())
@@ -40,10 +44,14 @@ function returnResults(url, innerText2){
             div_card.setAttribute('class','card');
             div_card.classList.add('clickableCard');
 
-            //Checks to see if the movie card is clicked
-            div_card.addEventListener('click', () =>{
-                main.innerHTML = '';
-            })
+            // Add type and id so we know what was clicked
+            div_card.dataset.id = element.id;
+            if(element.title){
+                div_card.dataset.type = "movie";
+            } else{
+                div_card.dataset.type = "tv";
+            }
+
             const div_row = document.createElement('div');
             div_row.setAttribute('class','row');
             const div_column = document.createElement('div');
@@ -72,8 +80,69 @@ function returnResults(url, innerText2){
             div_column.appendChild(div_card);
             div_row.appendChild(div_column);
             main.appendChild(div_row);
+
+            // When a card is clicked, show details
+            div_card.addEventListener('click', () => {
+                showDetails(element.id, div_card.dataset.type);
+            })
         });
     });
+}
+
+/* Function to return details of movies/tv shows; 
+   'id' is the unique ID for the selected movie or TV show, and 
+   'type' tells where its "movie" or "tv" */
+function showDetails(id, type){
+    // Clear resluts
+    main.innerHTML = '';
+    // Get details and credits 
+    const DETAILS_URL = `https://api.themoviedb.org/3/${type}/${id}?api_key=0cec74559973c77aa1ad5ebabb957d6b&language=en-US`;
+    const CREDITS_URL = `https://api.themoviedb.org/3/${type}/${id}/credits?api_key=0cec74559973c77aa1ad5ebabb957d6b&language=en-US`;
+    // Sends two fetch requests simultaneously, one for details; one for credits
+    Promise.all([fetch(DETAILS_URL), fetch(CREDITS_URL)])
+        .then(responses => Promise.all(responses.map(res => res.json())))
+        .then(([details, credits]) => {
+            /* Take the credits.cast array. Uses '.slice(0,5) to keep the first five actors'. 
+               Then the names of each actor is extracted via '.map(actor => actor.name)'.
+               Finally, uses '.join(', ')' to turn the array into a readable string. */
+            const cast = credits.cast.slice(0, 5).map(actor => actor.name).join(', ');
+            // Create a new div that will hold all the detai;ed movie/show info
+            const container = document.createElement('div');
+            container.classList.add('details-container');
+            // Details of the movie/poster
+            container.innerHTML = `
+                <h2 id="details-title">
+                    ${details.title || details.name}
+                </h2>
+                <img class="details-poster" src="${IMG_PATH + details.poster_path}" alt="${details.title || details.name}">
+                <p><strong>Rating:</strong> ⭐ ${details.vote_average ? details.vote_average.toFixed(1) : 'N/A'}</p>
+                <p><strong>Release Date:</strong> ${details.release_date || details.first_air_date || 'N/A'}</p>
+                <p><strong>Overview:</strong> ${details.overview || 'No description available.'}</p>
+                <p><strong>Cast:</strong> ${cast || 'No cast information available.'}</p>
+                <button id="back-button">
+                    ← Return
+                </button>`;
+            main.appendChild(container);
+            // Handle Return button
+            document.getElementById('back-button').addEventListener('click', () => {
+                // Clear apge
+                main.innerHTML = '';
+                // Check if user has searched for something
+                if(lastSearch){
+                    /* Return user to their previous page - they won't be returned to the main page,
+                       but rather their last search */
+                    if(lastSearch.type === 'movie'){
+                        returnResults(SEARCHAPI + lastSearch.query, "Search Results");
+                    } else{
+                        returnResults(SEARCHTV + lastSearch.query, "Search Results");
+                    }
+                } else{
+                    // If they have no 'last Search', return to main page
+                    returnResults(APILINK, "Popular Movies Today");
+                    returnResults(TV_APILINK, "Popular TV Shows Today");
+                }
+            });
+        })
 }
 
 /* Listens for a form submission.  If detected, it clears the current
@@ -89,6 +158,11 @@ form.addEventListener("submit", (e) => {
     const selectedType = type.value;
     // Only proceeds if user selected "movie"
     if (searchItem){
+        // Save the users search for back nav
+        lastSearch = {
+            query: searchItem,
+            type: selectedType
+        };
         if(selectedType === "movie"){
             /* Calls the 'returnResults' function with the movie search URL and heading. 
                Returns all the movies that match the query */
