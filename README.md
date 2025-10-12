@@ -20,7 +20,7 @@ Before starting, I wanted to highlight and analyse the key requirements that my 
 ![Default Web Page](images/screenshot-of-default-web-page.png)
 ![Default Web Page](images/screenshot-of-default-web-page2.png)
 
-### Result of User Search
+### Results of User Search
 
 ![Default Web Page](images/screenshot-of-search.png)
 
