@@ -204,19 +204,24 @@ input{
 
 /* Styling the movie/tv info */
 .details-container {
-    text-align: center;
+    grid-column: 1 / -1;
+    width: 100vw;
+    text-align: left;
     color: white;
     margin: 0;
     padding: 20px;
     background-color: black;
     width: 100%;
     min-height: 100%;
+    box-sizing: border-box;
 }
 
 /* make the poster fill the container / viewport width */
 .details-poster {
-    width: auto;
-    height: auto;
+    width: 180px;
+    height: 320px;
+    object-fit: cover;
+    object-position: center;
     display: block;
 }
 
