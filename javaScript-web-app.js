@@ -134,8 +134,11 @@ function showDetails(id, type){
                        but rather their last search */
                     if(lastSearch.type === 'movie'){
                         returnResults(SEARCHAPI + lastSearch.query, "Search Results");
+                        lastSearch = null;
+
                     } else{
                         returnResults(SEARCHTV + lastSearch.query, "Search Results");
+                        lastSearch = null;
                     }
                 } else{
                     // If they have no 'last Search', return to main page
