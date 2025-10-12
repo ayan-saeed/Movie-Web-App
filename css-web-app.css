@@ -68,6 +68,7 @@ h3{
     background-color: #121212;
     position: relative;
     padding: 0.1px 20px;
+    z-index: 10;
 
 }
 
@@ -214,6 +215,7 @@ input{
     width: 100%;
     min-height: 100%;
     box-sizing: border-box;
+    position: relative;
 }
 
 /* make the poster fill the container / viewport width */
@@ -223,6 +225,28 @@ input{
     object-fit: cover;
     object-position: center;
     display: block;
+    position: relative;
+    z-index: 1;
+}
+
+/* Nice extra detail to have a backdrop, to make the 
+   movie/tv show info more visual interesting */
+.details-backdrop {
+    /* Positions the element relative to the nearest parent */
+    position: absolute;
+    /* Places the top-left corner of the backdrop at the top-left corner of the container */
+    top: 0;
+    left: 0;
+    /* Takes up the entire page */
+    width: 100%;
+    height: 100%;
+    /* Ensures the image fills the container without stretching,
+       preserving its aspect ratio. */
+    object-fit: cover;
+    /* Makes the image semi-transparent */
+    opacity: 0.2;
+    /* Controls stacking order. Makes sure it isnt infront of anything */
+    z-index: 0;
 }
 
 /* movie/tv title styling */
@@ -230,6 +254,15 @@ input{
     font-size: 1.2rem;
     color: red;
     margin: 15px 0;
+    position: relative;
+    z-index: 1;
+}
+
+/* Info about the movie/tv show */
+.details-info{
+    color: white;
+    position: relative;
+    z-index: 1;
 }
 
 /* Styling the return button */
@@ -243,6 +276,8 @@ input{
     font-weight: bold;
     margin-top: 20px;
     font-size: 20px;
+    position: relative;
+    z-index: 1;
 }
 #back-button:hover {
     background-color: darkred;

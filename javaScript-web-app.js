@@ -115,10 +115,11 @@ function showDetails(id, type){
                     ${details.title || details.name}
                 </h2>
                 <img class="details-poster" src="${IMG_PATH + details.poster_path}" alt="${details.title || details.name}">
-                <p><strong>Rating:</strong> ⭐ ${details.vote_average ? details.vote_average.toFixed(1) : 'N/A'}</p>
-                <p><strong>Release Date:</strong> ${details.release_date || details.first_air_date || 'N/A'}</p>
-                <p><strong>Overview:</strong> ${details.overview || 'No description available.'}</p>
-                <p><strong>Cast:</strong> ${cast || 'No cast information available.'}</p>
+                <img class="details-backdrop" src="${IMG_PATH + details.backdrop_path}" alt="${details.title || details.name}">
+                <p class="details-info"><strong>Rating:</strong> ⭐ ${details.vote_average ? details.vote_average.toFixed(1) : 'N/A'}</p>
+                <p class="details-info"><strong>Release Date:</strong> ${details.release_date || details.first_air_date || 'N/A'}</p>
+                <p class="details-info"><strong>Overview:</strong> ${details.overview || 'No description available.'}</p>
+                <p class="details-info"><strong>Cast:</strong> ${cast || 'No cast information available.'}</p>
                 <button id="back-button">
                     ← Return
                 </button>`;
