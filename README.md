@@ -13,3 +13,21 @@ Before starting, I wanted to highlight and analyse the key requirements that my 
 - **See ratings**.
 ### Future / Low-Priority Features
 - **Watchlist**: More of a nice-to-have feature. 
+
+## Completed UI of Web Page
+### Default Web Page
+![Default Web Page](images/screenshot-of-default-web-page.png)
+![Default Web Page](images/screenshot-of-default-web-page2.png)
+
+### Result of User Search
+![Default Web Page](images/screenshot-of-search.png)
+
+### Description of Movie/TV Show
+![Default Web Page](images/screenshot-of-info-page.png)
+
+### TV Show and Movie Filtering
+'Breaking Bad' is used as an example here.
+When using the search bar with the 'Movies' filter selected, the TV show results do not appear - only the movie.
+
+![Default Web Page](images/screenshot-of-movie-filtering.png)
+![Default Web Page](images/screenshot-of-tv-filtering.png)
