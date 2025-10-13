@@ -42,3 +42,14 @@ When using the search bar with the 'Movies' filter selected, the TV show results
 
 ### Removing from Watchlist
 ![Watchlist](images/screenshot-of-removing-watchlist.png)<br><br>
+
+## Completed Requirements
+- ✅ **Search for Specific Movies**
+- ✅ **Browse Movies**
+- ✅ **View detailed movie information**
+- ✅ **See ratings**
+- ✅ **Watchlist**
+
+### Final Web Page
+![Web Page](images/final-default-page-screenshot.png)
+![Web Page](images/final-default-page2-screenshot.png)
