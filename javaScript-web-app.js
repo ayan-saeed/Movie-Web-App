@@ -192,54 +192,6 @@ returnToMain.addEventListener("click", (e) => {
     returnResults(TV_APILINK, "Popular TV Shows Today");
 });
 
-// Sign in page
-signIn.addEventListener("click", (e) => {
-    if(!signedin){
-        e.preventDefault();
-        main.innerHTML = `
-            <div class="signin-container">
-                <h2>Sign In</h2>
-                <div class="signin-form">
-                    <form id="email-form">
-                        <input type="text" id="username" placeholder="Email" required>
-                    </form>
-                    <form id="password-form">
-                        <input type="text" id="password" placeholder="Password" required>
-                    </form>
-                    <button type="submit" id="signin-button">Sign In</button>
-                    <p><small>Don't have an account? <a id="register" href="#"> Register</a></small></p>
-                </div>
-            </div>
-        `;
-        document.getElementById('register').addEventListener('click', (e) => {
-        e.preventDefault();
-        main.innerHTML = `
-            <div class="signup-container">
-                <h2>Sign Up</h2>
-                <div class="signup-form">
-                    <form id="email-form">
-                        <input type="text" id="username" placeholder="Email" required>
-                    </form>
-                    <form id="password2-form">
-                        <input type="text" id="password" placeholder="Password" required>
-                    </form>
-                    <button type="submit" id="signup-button">Sign Up</button>
-                </div>
-            </div>`;
-        });
-    } else{
-        e.preventDefault();
-        main.innerHTML = `
-        <div class="already-signed-in">
-            <h2>Signed In Already</h2>
-        </div>
-        <button id="back-button">← Return</button>`;
-        document.getElementById('back-button').addEventListener('click', (e) => {
-        e.preventDefault();
-        main.innerHTML = '';
-        returnResults(APILINK, "Popular Movies Today");
-        returnResults(TV_APILINK, "Popular TV Shows Today");
-        });
-    }
-})
+
+
 
