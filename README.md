@@ -17,28 +17,28 @@ Before starting, I wanted to highlight and analyse the key requirements that my 
 ### Default Web Page
 
 ![Default Web Page](images/screenshot-of-default-web-page.png)
-![Default Web Page](images/screenshot-of-default-web-page2.png)
+![Default Web Page](images/screenshot-of-default-web-page2.png)<br><br>
 
 ### Results of User Search
 
-![Default Web Page](images/screenshot-of-search.png)
+![Default Web Page](images/screenshot-of-search.png)<br><br>
 
 ### Description of Movie/TV Show
 
-![Default Web Page](images/screenshot-of-info-page.png)
+![Default Web Page](images/screenshot-of-info-page.png)<br><br>
 
 ### TV Show and Movie Filtering
 'Breaking Bad' is used as an example here.
 When using the search bar with the 'Movies' filter selected, the TV show results do not appear - only the movies.
 
 ![Default Web Page](images/screenshot-of-movie-filtering.png)
-![Default Web Page](images/screenshot-of-tv-filtering.png)
+![Default Web Page](images/screenshot-of-tv-filtering.png)<br><br>
 
 ### Adding to Watchlist
-![Watchlist](images/screenshot-of-adding-watchlist.png)
+![Watchlist](images/screenshot-of-adding-watchlist.png)<br><br>
 
 ### Viewing Watchlist
-![Watchlist](images/screenshot-of-viewing-watchlist.png)
+![Watchlist](images/screenshot-of-viewing-watchlist.png)<br><br>
 
 ### Removing from Watchlist
-![Watchlist](images/screenshot-of-removing-watchlist.png)
+![Watchlist](images/screenshot-of-removing-watchlist.png)<br><br>
