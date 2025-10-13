@@ -25,7 +25,7 @@ html, body {
     font-size: 2.5rem;
     font-weight: normal;
     margin: 20px 0;
-    color: red;
+    color: #e50914;
     font-family: 'MyMovieDbFont', sans-serif;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -89,7 +89,7 @@ h3{
     font-size: 2rem;
 
     color: #000000;
-    background-color: red;
+    background-color: #e50914;
     text-decoration: none;
     padding: 4px 8px;
     border-radius: 8px;
@@ -252,7 +252,7 @@ input{
 /* movie/tv title styling */
 #details-title {
     font-size: 1.2rem;
-    color: red;
+    color: #e50914;
     margin: 15px 0;
     position: relative;
     z-index: 1;
@@ -267,7 +267,7 @@ input{
 
 /* Styling the return button */
 #back-button {
-    background-color: red;
+    background-color: #e50914;
     color: #000000;
     border: none;
     border-radius: 8px;
@@ -281,4 +281,75 @@ input{
 }
 #back-button:hover {
     background-color: darkred;
+}
+
+/* Sign in page styling */
+.signin-container {
+    /* Reset grid constraint from section */
+    grid-column: 1 / -1;
+    background-color: black;
+    color: white;
+    padding: 40px;
+}
+
+.signin-container h2 {
+    color: #e50914;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.signin-form {
+    /* Turn all child elements to flex */
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    gap: 5px;
+}
+
+#email-form input,
+#password-form input {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    outline: none;
+    background-color: white;
+    color: #333;
+    font-size: 16px;
+}
+
+#email-form input {
+    border-radius: 10px 10px 0 0;
+}
+
+#password-form input {
+    border-radius: 0 0 10px 10px;
+    border-top: 2px solid white;
+}
+
+#signin-button {
+    grid-column: 1 / -1;
+    margin-top: 10px;
+    padding: 10px 10px;
+    width: 110px;
+    background-color: #e50914;
+    color: black;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#signin-button:hover {
+    background-color: darkred;
+}
+
+.already-signed-in{
+    grid-column: 1 / -1;
+    align-items: center;
+    color: #e50914;
+}
+
+.already-signed-in #back-button{
+    grid-column: 1 / -1;
+    align-items: center;
 }
