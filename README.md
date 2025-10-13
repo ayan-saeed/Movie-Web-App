@@ -13,7 +13,7 @@ Before starting, I wanted to highlight and analyse the key requirements that my 
 - **See ratings**.
 - **Watchlist**: Back-end feature.
 
-## Completed UI of Web Page
+## Initial UI of Web Page
 ### Default Web Page
 
 ![Default Web Page](images/screenshot-of-default-web-page.png)
