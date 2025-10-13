@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "dev": "concurrently \"nodemon backend/server.js\" \"live-server ./\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "nodemon": "^3.1.10"
+  }
+}

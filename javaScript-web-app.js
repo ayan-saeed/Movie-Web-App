@@ -1,15 +1,16 @@
 /* This is the URL for TMDb's "Discover Movies" API. 
    Fetches the movies sorted by popularity, in descending order */ 
 const APILINK = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=0cec74559973c77aa1ad5ebabb957d6b&page=1";
-// URL for the movie posters */
+// URL for the movie posters
 const IMG_PATH = "https://image.tmdb.org/t/p/w1280";
-// URL for searching movies by query text */
+// URL for searching movies by query text
 const SEARCHAPI = "https://api.themoviedb.org/3/search/movie?&api_key=0cec74559973c77aa1ad5ebabb957d6b&query=";
 // URL for searching for tv shows
 const SEARCHTV = "https://api.themoviedb.org/3/search/tv?api_key=0cec74559973c77aa1ad5ebabb957d6b&query=";
 // URL for TV shows
 const TV_APILINK = "https://api.themoviedb.org/3/discover/tv?sort_by=popularity.desc&api_key=0cec74559973c77aa1ad5ebabb957d6b&page=1";
-
+// Backend URL for wishlist API
+const BACKEND_URL = "http://localhost:3000";
 
 // References to elements
 const main = document.getElementById("section");
@@ -76,10 +77,19 @@ function returnResults(url, innerText2){
 
             image.src = IMG_PATH + element.poster_path;
             center.appendChild(image);
+            // Add a watchlist button to card
+            const wishlistBtn = document.createElement('button');
+            wishlistBtn.textContent = "Add to Watchlist";
+            wishlistBtn.classList.add('wishlist-button');   
+            wishlistBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                addToWishlist(element.id, element.title || element.name, IMG_PATH + element.poster_path);
+            });
             /* Appends the image and title to the card, card to column, column to row, 
                and row to the main section */
             div_card.appendChild(center);
             div_card.appendChild(title);
+            div_card.appendChild(wishlistBtn);
             div_column.appendChild(div_card);
             div_row.appendChild(div_column);
             main.appendChild(div_row);
@@ -192,6 +202,24 @@ returnToMain.addEventListener("click", (e) => {
     returnResults(TV_APILINK, "Popular TV Shows Today");
 });
 
-
-
-
+// Watchlist functionality
+// Function takes three parameters
+function addToWishlist(movieId, title, poster) {
+    // Sends fetech request to backend
+    fetch(`${BACKEND_URL}/wishlist`, {
+        // Tells the server POST request (we’re sending data not just reading).
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ movieId, title, poster })
+    })
+    // When backend responds, fetech first returns a Response object 
+    .then(res => res.json())
+    .then(data => {
+        if(data.success){
+            alert(`${title} added to wishlist!`);
+        } else {
+            alert(data.message || 'Failed to add movie to wishlist.');
+        }
+    })
+    .catch(err => console.error(err));
+}
