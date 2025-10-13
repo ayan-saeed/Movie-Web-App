@@ -353,3 +353,61 @@ input{
     grid-column: 1 / -1;
     align-items: center;
 }
+
+/* Sign Up styling */
+.signup-container {
+    grid-column: 1 / -1;
+    background-color: black;
+    color: white;
+    padding: 40px;
+}
+
+.signup-container h2 {
+    color: #e50914;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    gap: 5px;
+}
+
+#email-form input,
+#password2-form input {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    outline: none;
+    background-color: white;
+    color: #333;
+    font-size: 16px;
+}
+
+#email-form input {
+    border-radius: 10px 10px 0 0;
+}
+
+#password2-form input {
+    border-radius: 0 0 10px 10px;
+    border-top: 2px solid white;
+}
+
+#signup-button {
+    grid-column: 1 / -1;
+    margin-top: 10px;
+    padding: 10px 10px;
+    width: 110px;
+    background-color: #e50914;
+    color: black;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#signup-button:hover {
+    background-color: darkred;
+}
