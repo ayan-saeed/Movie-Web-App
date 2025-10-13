@@ -8,11 +8,10 @@ As an avid movie enthusiast, who frequently uses IMDb to discover and track film
 Before starting, I wanted to highlight and analyse the key requirements that my project must include. From initial observations, the basic functionalities of IMDb are comprised of: 
 - **Search for Specific Movies**: Argueably the most important feature, as it allows users to explore and search for titles.
 - **Browse Movies**: View the currently trending movies on the main page. 
-- **Sign in**: Allows users to create a personal account, in order to track their watchlists etc. 
+
 - **View detailed movie information**: Including release year, runtime, cast and other relevent information. 
 - **See ratings**.
-### Future / Low-Priority Features
-- **Watchlist**: More of a nice-to-have feature. 
+- **Watchlist**: Back-end feature.
 
 ## Completed UI of Web Page
 ### Default Web Page
@@ -34,3 +33,12 @@ When using the search bar with the 'Movies' filter selected, the TV show results
 
 ![Default Web Page](images/screenshot-of-movie-filtering.png)
 ![Default Web Page](images/screenshot-of-tv-filtering.png)
+
+### Adding to Watchlist
+![Watchlist](images/screenshot-of-adding-watchlist.png)
+
+### Viewing Watchlist
+![Watchlist](images/screenshot-of-viewing-watchlist.png)
+
+### Removing from Watchlist
+![Watchlist](images/screenshot-of-removing-watchlist.png)
