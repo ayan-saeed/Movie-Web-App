@@ -283,3 +283,58 @@ input{
     background-color: darkred;
 }
 
+/* 'Add to watchlist' button */
+.wishlist-button{
+    background-color: #e50914;
+    color: #000000;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    position: relative;
+    z-index: 1;
+}
+.wishlist-button:hover {
+    background-color: darkred;
+}
+
+/* View full watchlist */
+.watchlist{
+    font-family: 'MyMovieDbFont', Helvetica, sans-serif;
+    font-size: 2rem;
+    color: #000000;
+    background-color: #e50914;
+    text-decoration: none;
+    padding: 4px 8px;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.empty, .fail{
+    color: #e50914;
+}
+
+/* style pop up */
+.popup-message {
+    /* Locks the element to the browser viewport.
+       It doesn’t move when the page scrolls */
+    position: fixed;
+    /* Places the element 20 pixels above the bottom edge of the viewport */
+    bottom: 20px;
+    /* Places the element 20 pixels from the right edge of the viewport */
+    right: 20px;
+    background-color: #222;
+    color: #e50914;
+    padding: 10px 16px;
+    border-radius: 6px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    opacity: 1;
+    /* Animates changes to the opacity property over 0.5 seconds. 
+       Uses an ease timing function, so opacity goes from 1 to 0, 
+       causing the popup to fade out rather than disappearing instantly */
+    transition: opacity 0.5s ease;
+    /* Ensures the pop up is at the top */
+    z-index: 1000;
+    font-size: 0.9rem;
+}

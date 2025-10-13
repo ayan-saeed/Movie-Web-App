@@ -24,10 +24,14 @@ db.once('open', () => console.log('Connected to MongoDB'));
 
 // Get all wishlist movies
 app.get('/wishlist', async (req, res) => {
-    // Returns an array of all saved movies
-    const wishlist = await Wishlist.find();
-    // Sends the array back to client as JSON
-    res.json(wishlist);
+    try{
+        // Returns an array of all saved movies
+        const wishlist = await Wishlist.find();
+        // Sends the array back to client as JSON
+        res.json({success: true, wishlist});
+    } catch(err){
+        res.status(500).json({ success: false, error: err.message });
+    }
 });
 
 /* When my frontend does a POST request to /wishlist, this route runs.
@@ -37,7 +41,7 @@ app.post('/wishlist', async (req, res) => {
     try {
         const movie = new Wishlist(req.body);
         await movie.save();
-        res.json({ success: true, movie });
+        res.json({success: true, movie});
     } catch (err) {
         if (err.code === 11000) {
             return res.json({ success: false, message: 'Movie already in wishlist' });
@@ -48,9 +52,16 @@ app.post('/wishlist', async (req, res) => {
 
 /* Removes the movie that matches that ID in MongoDB */
 app.delete('/wishlist/:id', async (req, res) => {
-    const movieId = req.params.id;
-    await Wishlist.deleteOne({ movieId });
-    res.json({ success: true });
+    try{
+        const movieId = req.params.id;
+        const result = await Wishlist.deleteOne({movieId: movieId});
+        if(result.deletedCount === 0){
+            return res.json({ success: false, message: 'Movie not found.' });
+        }
+        res.json({ success: true, message: 'Movie removed from wishlist.' });
+    } catch (err){
+        res.status(500).json({ success: false, error: err.message });
+    }
 });
 
 // Tells Express to start listening for incoming requests on port 3000

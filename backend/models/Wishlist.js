@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 // Defined schema - a template for how each record in Mangodb collection should look
 const wishlistSchema = new mongoose.Schema({
     // 'unique' prevents duplicates in wishlist
-    movieId: { type: Number, required: true, unique: true },
+    movieId: { type: String, required: true, unique: true },
     title: String,
     poster: String
 });

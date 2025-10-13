@@ -19,6 +19,7 @@ const search = document.getElementById("query");
 const returnToMain = document.getElementsByClassName("logo")[0];
 const type = document.getElementById("type");
 const signIn = document.getElementsByClassName("sign")[0];
+const viewWatchlist = document.getElementsByClassName("watchlist")[0];
 
 // Store the user's last search
 let lastSearch = null;
@@ -216,10 +217,84 @@ function addToWishlist(movieId, title, poster) {
     .then(res => res.json())
     .then(data => {
         if(data.success){
-            alert(`${title} added to wishlist!`);
+            showPopup("✅ Movie added to watchlist.");
         } else {
-            alert(data.message || 'Failed to add movie to wishlist.');
+            showPopup("❌ Failed to add movie to wishlist.");
         }
     })
-    .catch(err => console.error(err));
+}
+
+viewWatchlist.addEventListener("click", (e) => {
+    e.preventDefault();
+    main.innerHTML = '';
+    /* Sends a GET request to my backend to get the users saved watchlist - when recieved,
+       converts response into a usable JavaScript object */
+    fetch(`${BACKEND_URL}/wishlist`).then(res => res.json()).then(data => {
+        // Checks if the backend responded with success: true
+        if(data.success){
+            // If the watchlist array is empty, return message
+            if(data.wishlist.length === 0){
+                main.innerHTML = '<p class="empty">Your watchlist is empty.</p>';
+                    return;
+            }
+            // Loops through every movie in the watchlist array
+            data.wishlist.forEach(movie => {
+                // Creates a "card" to represent the movie
+                const div_card = document.createElement('div');
+                div_card.classList.add('card');
+                const title = document.createElement('h3');
+                title.textContent = movie.title;
+                const image = document.createElement('img');
+                image.src = movie.poster;
+                image.classList.add('thumbnail');
+                // Creates a remove from watchlist button
+                const deleteBtn = document.createElement('button');
+                deleteBtn.textContent = "Remove";
+                deleteBtn.classList.add('wishlist-button');
+                deleteBtn.addEventListener('click', () => {
+                    deleteFromWishlist(String(movie.movieId), div_card);
+                });
+                /* Adds image, title, and delete button inside div_card,
+                   then appends the whole card to the main container */
+                div_card.appendChild(image);
+                div_card.appendChild(title);
+                div_card.appendChild(deleteBtn);
+                main.appendChild(div_card);
+            });
+        } else{
+            // If data.success is false (server error), show an error message
+            main.innerHTML = '<p class="fail">Failed to load watchlist.</p>';
+        }
+    })
+});
+
+function deleteFromWishlist(movieId, cardElement){
+    // Sends a DELETE request to my backend route; backend then removes that movie from MongoDB
+    fetch(`${BACKEND_URL}/wishlist/${movieId}`, {
+        method: "DELETE"
+    }).then(res => res.json()).then(data => {
+        /* If the server confirmes data deletion, 
+           a corresponding popup is shown */
+        if(data.success){
+            showPopup("✅ Movie removed from watchlist.");
+            cardElement.remove();
+        } else{
+            showPopup("❌ Failed to remove movie.");
+        }
+    })
+}
+
+// Function for popup
+function showPopup(message) {
+    // Creates a div that acts as a small message box
+    const popup = document.createElement('div');
+    // Content of div is set to the message
+    popup.textContent = message;
+    popup.classList.add('popup-message');
+    document.body.appendChild(popup);
+    /* After 2 seconds the popup fades out after fade animtion, 
+       which lasts for 0.5s */
+    setTimeout(() => {
+        popup.style.opacity = '0';
+        setTimeout(() => popup.remove(), 500);}, 2000);
 }
