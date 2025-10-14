@@ -201,6 +201,7 @@ returnToMain.addEventListener("click", (e) => {
     main.innerHTML = '';
     returnResults(APILINK, "Popular Movies Today");
     returnResults(TV_APILINK, "Popular TV Shows Today");
+    lastSearch = null;
 });
 
 // Watchlist functionality
