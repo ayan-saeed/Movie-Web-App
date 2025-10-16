@@ -51,5 +51,5 @@ When using the search bar with the 'Movies' filter selected, the TV show results
 - ✅ **Watchlist**
 
 ### Final Web Page
-![Web Page](images/final-default-page3-screenshot.png)
+![Web Page](images/actual-final-web-page.png)
 ![Web Page](images/final-default-page2-screenshot.png)

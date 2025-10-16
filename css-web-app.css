@@ -184,24 +184,7 @@ input{
     outline: none;
 }
 
-/* Styling the sign in */
-.sign{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 0.9rem;
-    font-weight: bold;
-    color: white;
-    text-decoration: none;
-    padding: 14px 14px;
-    border-radius: 30px;
-    text-decoration: none;
-    display: inline-block;
-    transition: all 0.2s ease;
-}
 
-/* Background appears when hovering over sign in button */
-.sign:hover{
-    background-color: #6e6e6e;
-}
 
 /* Styling the movie/tv info */
 .details-container {
@@ -302,13 +285,18 @@ input{
 .watchlist{
     font-family: 'MyMovieDbFont', Helvetica, sans-serif;
     font-size: 2rem;
-    color: #000000;
-    background-color: #e50914;
+    color: white;
     text-decoration: none;
     padding: 4px 8px;
     border-radius: 8px;
     text-decoration: none;
     display: inline-block;
+    transition: all 0.25s ease;
+}
+
+.watchlist:hover{
+    background-color: #6e6e6e;
+    color: black;
 }
 
 .empty, .fail{
