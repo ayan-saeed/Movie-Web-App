@@ -93,10 +93,15 @@ h3{
     text-decoration: none;
     padding: 4px 8px;
     border-radius: 8px;
-    text-decoration: none;
-    display: inline-block;
-}
 
+    display: inline-block;
+    transition: all 0.1s ease;
+}
+.logo:hover {
+    background-color: darkred;
+    
+
+}
 
 .search-bar {
     /* Makes the search bar take up all available space between logo and sign-in link */
